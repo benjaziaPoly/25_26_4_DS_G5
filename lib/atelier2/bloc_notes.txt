@@ -1,0 +1,5 @@
+Classe POO
+Widget: => Class Poo
+Construct({})
+//Widget => A Majucule
+// attributs => minusc

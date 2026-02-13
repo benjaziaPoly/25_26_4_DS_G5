@@ -1,0 +1,7 @@
+Gestion des etats (state)
+herité depuis une classe mere:
+-
+-
+Widget statique: StateLessWidget => stl
+Widget dynamic: StateFulWidget =>stf
+class x extends 
