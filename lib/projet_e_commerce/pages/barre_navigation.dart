@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projet/projet_e_commerce/myWidgets/mon_menu.dart';
 import 'package:projet/projet_e_commerce/pages/favorite.dart';
 import 'package:projet/projet_e_commerce/pages/home_page.dart';
 import 'package:projet/projet_e_commerce/pages/page_user.dart';
@@ -24,6 +25,7 @@ class _BarreNavigationScreenState extends State<BarreNavigationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+     
       bottomNavigationBar: BottomNavigationBar(
         onTap: (index) {
           setState(() {
