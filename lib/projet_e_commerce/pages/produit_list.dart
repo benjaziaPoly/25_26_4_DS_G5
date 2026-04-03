@@ -10,6 +10,15 @@ class ProduitListPage extends StatefulWidget {
   State<ProduitListPage> createState() => _MyWidgetState();
 }
 
+/**
+ * passage depuis la page ListProduit => DetailProduit
+ *  A.
+ *     passage via le constructeur de la classe DetailProduit(
+ *        Index  
+ *        object Produit
+ *     )
+ *  B. Navigator: arguments
+ */
 class _MyWidgetState extends State<ProduitListPage> {
   @override
   Widget build(BuildContext context) {
@@ -25,7 +34,8 @@ class _MyWidgetState extends State<ProduitListPage> {
         children: List.generate(AllProductData.Produits.length, (index) {
           return InkWell(
             onTap: () {
-              ProduitDetailPage(produit:AllProductData.Produits[index]);
+              Navigator.pushNamed(context, "detailProduit", arguments: index);
+              // ProduitDetailPage(produit: AllProductData.Produits[index]);
             },
             child: WidgetProduit(p: AllProductData.Produits[index]),
           );

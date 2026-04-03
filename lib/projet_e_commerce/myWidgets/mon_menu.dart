@@ -22,6 +22,42 @@ class _MyWidgetState extends State<MonMenu> {
               ),
             ),
           ),
+
+          ListTile(
+            title: Text("Acceuil"),
+            leading: Icon(Icons.home),
+            onTap: () {
+              Navigator.pushNamed(context, "home");
+            },
+          ),
+          ListTile(
+            title: Text("Liste Produit"),
+            leading: Icon(Icons.list),
+            onTap: () {
+              Navigator.pushNamed(context, "listProduit");
+            },
+          ),
+          ListTile(
+            title: Text("Panier"),
+            leading: Icon(Icons.shopping_cart),
+            onTap: () {
+              Navigator.pushNamed(context, "panier");
+            },
+          ),
+          ListTile(
+            title: Text("Favorite"),
+            leading: Icon(Icons.favorite),
+            onTap: () {
+              Navigator.pushNamed(context, "favorite");
+            },
+          ),
+          ListTile(
+            title: Text("Mon Profil"),
+            leading: Icon(Icons.person),
+            onTap: () {
+              Navigator.pushNamed(context, "profile");
+            },
+          ),
         ],
       ),
     );
