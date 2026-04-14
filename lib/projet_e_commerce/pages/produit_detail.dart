@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:projet/projet_e_commerce/data/list_produits.dart';
 import 'package:projet/projet_e_commerce/model/class_produit.dart';
+import 'package:projet/projet_e_commerce/model/class_produit_panier.dart';
+import 'package:projet/projet_e_commerce/provider/cart_provider.dart';
+import 'package:provider/provider.dart';
 
 class ProduitDetailPage extends StatefulWidget {
   // Produit produit = Produit(
@@ -23,6 +26,8 @@ class ProduitDetailPage extends StatefulWidget {
 class _MyWidgetState extends State<ProduitDetailPage> {
   @override
   Widget build(BuildContext context) {
+    final panier = Provider.of<PanierProvider>(context);
+
     final dynamic args = ModalRoute.of(context)!.settings.arguments;
     int indexProduit;
     if (args == null || args.toString().isEmpty) {
@@ -90,7 +95,18 @@ class _MyWidgetState extends State<ProduitDetailPage> {
                     Expanded(
                       flex: 2,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          panier.ajouterProduit(
+                            ProduitPanier(
+                              id: productInfo.id,
+                              title: productInfo.title,
+                              description: productInfo.description,
+                              price: productInfo.price,
+                              imageUrl: productInfo.imageUrl,
+                              quantite: 1,
+                            ),
+                          );
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.pink,
                           foregroundColor: Colors.white,
