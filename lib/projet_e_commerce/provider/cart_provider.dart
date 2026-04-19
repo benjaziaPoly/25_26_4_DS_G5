@@ -1,9 +1,16 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:projet/projet_e_commerce/model/class_produit_panier.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class PanierProvider with ChangeNotifier {
   //attribut Priavte
   List<ProduitPanier> _panier = [];
+
+  PanierProvider() {
+    getCart();
+  }
   // Ajouter GET UNIQUEMENT
   List<ProduitPanier> get Panier {
     return _panier;
@@ -36,4 +43,33 @@ class PanierProvider with ChangeNotifier {
     ////IMPORTANT
     notifyListeners();
   }
+
+  Future<void> saveCart() async {
+    //localStrorage
+    // SharedPreferences
+    final SharedPreferences data = await SharedPreferences.getInstance();
+    //_panier List ProdutPanier
+    // _panier => JSON => STring
+    final List<String> xx = _panier.map((item) => item.toJson()).toList();
+    await data.setString("cartSaved", json.encode(xx)); //ecriture
+  }
+
+  Future<void> getCart() async {
+    final SharedPreferences data = await SharedPreferences.getInstance();
+    String? valeur = await data.getString("cartSaved");
+    if (valeur == null) {
+      _panier = [];
+    } else {
+      List<dynamic> listMap = json.decode(valeur);
+
+      _panier = listMap.map((item) => ProduitPanier.fromJson(item)).toList();
+    }
+
+    notifyListeners();
+  }
 }
+// key:value
+   // object  {
+   //}
+   // array : [     ]
+   // format josn ==> UNE CHAINE Formatté : 

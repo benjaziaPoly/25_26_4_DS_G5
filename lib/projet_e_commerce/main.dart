@@ -39,3 +39,9 @@ class EcommerceApp extends StatelessWidget {
     );
   }
 }
+//Exemple
+// Future <void > getData() async{
+// //
+//  await XXXXX
+// //
+// }
