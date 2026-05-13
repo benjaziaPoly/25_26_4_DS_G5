@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:projet/projet_e_commerce/data/list_produits.dart';
+import 'package:projet/projet_e_commerce/service/firebase_crud.dart';
 import 'package:web/web.dart' as web;
 
 class MonMenu extends StatefulWidget {
@@ -60,6 +62,22 @@ class _MyWidgetState extends State<MonMenu> {
             leading: Icon(Icons.person),
             onTap: () {
               Navigator.pushNamed(context, "profile");
+            },
+          ),
+          ListTile(
+            enabled: false,
+            title: Text("Export data"),
+            leading: Icon(Icons.data_array_rounded),
+            onTap: () {
+              var fbc = FireBaseCrud();
+              fbc.savedata(AllProductData.Produits);
+            },
+          ),
+          ListTile(
+            title: Text("Méteo"),
+            leading: Icon(Icons.sunny),
+            onTap: () {
+              Navigator.pushNamed(context, "meteo");
             },
           ),
           Divider(),

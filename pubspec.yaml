@@ -38,6 +38,11 @@ dependencies:
   provider: ^6.1.5+1
   shared_preferences: ^2.5.5
   web: ^1.1.1
+  firebase_core: ^4.7.0
+  cloud_firestore: ^6.3.0
+  http: ^1.6.0
+  geolocator: ^14.0.2
+  weather_icons: ^3.0.0
 
 dev_dependencies:
   flutter_test:
